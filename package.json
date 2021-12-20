@@ -1,0 +1,43 @@
+{
+  "name": "webpack-nutui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack serve",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
+    "@babel/preset-typescript": "^7.16.5",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-import": "^1.13.3",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "2.5.1",
+    "sass": "^1.45.0",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.4",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  },
+  "dependencies": {
+    "@feb-team/legao-react": "^0.2.7",
+    "@nutui/nutui": "^3.1.12",
+    "@test/nutui-react": "^1.0.8",
+    "antd": "^4.17.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
