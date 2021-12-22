@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "production",
@@ -11,23 +12,26 @@ module.exports = {
   entry: "./src/index.tsx",
   optimization: {
     usedExports: true,
+    splitChunks: {
+      chunks: "all",
+    },
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "foo.bundle.js",
+    filename: "[name].bundle.js",
   },
   module: {
     rules: [
       {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
         test: /\.tsx?$/,
         use: [
-          // "ts-loader",
-          // {
-          //   loader: path.resolve(__dirname, "./loader.js"),
-          // },
           {
             loader: "babel-loader",
             options: {
@@ -43,11 +47,10 @@ module.exports = {
                     libraryName: "@test/nutui-react",
                     libraryDirectory: "dist/esm",
                     style: (file) => {
-                      console.log("style file:", file);
-                      return (
-                        file.replace("esm", "packages").toLowerCase() +
-                        "/index.scss"
-                      );
+                      const fileName = file.match(/\/(\w+)$/)[0];
+                      return `${file
+                        .replace("esm", "packages")
+                        .toLowerCase()}${fileName.toLowerCase()}.scss`;
                     },
                     camel2DashComponentName: false,
                   },
@@ -60,7 +63,7 @@ module.exports = {
         exclude: "/node_modules/",
       },
       {
-        test: /\.s?css$/i,
+        test: /\.s[ac]ss$/i,
         use: [
           "style-loader",
           "css-loader",
@@ -75,6 +78,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "index.html"),
     }),

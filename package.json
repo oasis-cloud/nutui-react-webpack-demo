@@ -22,6 +22,7 @@
     "babel-plugin-import": "^1.13.3",
     "css-loader": "^6.5.1",
     "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.4.5",
     "prettier": "2.5.1",
     "sass": "^1.45.0",
     "sass-loader": "^12.4.0",
@@ -35,7 +36,7 @@
   "dependencies": {
     "@feb-team/legao-react": "^0.2.7",
     "@nutui/nutui": "^3.1.12",
-    "@test/nutui-react": "^1.0.8",
+    "@test/nutui-react": "^1.0.11",
     "antd": "^4.17.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
